@@ -1,53 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Paraphrasing</title>
-    <script>
-        async function submitForm(event) {
-            event.preventDefault();
-            //outputDiv.innerHTML = 'Processing ...';
-            const outputDiv = document.getElementById('output');
-            const session_id = document.getElementById('session_id').value;
-            // const session_id = '';
-
-            const response = await fetch('{{ url_for("submit") }}', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: new URLSearchParams({ session_id })
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-
-                // outputDiv.innerHTML = `
-                //     <h2>Submitted Values</h2>
-                //     <p><strong>Session ID:</strong> ${data.session_id}</p>
-                //     <p><strong>Goal:</strong> ${data.goal}</p>
-                //     <p><strong>Activities:</strong> ${data.activities}</p>
-                // `;
-                outputDiv.innerHTML = JSON.stringify(data);
-                if (data.hasOwnProperty('session_id')) {
-                    document.getElementById('session_id').value = data.session_id;
-                    outputDiv.innerHTML = data.sections.GENERATE_SCENARIO;
-                }
-            } else {
-                outputDiv.innerHTML = '<p>An error occurred while submitting the form.</p>';
-            }
-        }
-    </script>
+  <title>Teacher Assistant</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    .full-height {
+      height: 90vh;
+    }
+    .flex-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .flex-grow {
+      flex-grow: 1;
+      overflow: auto;
+    }
+    .scrollable-list {
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>
-    <h1>Paraphrasing</h1>
-    <form onsubmit="submitForm(event)">
-        <label for="session_id">Session ID:</label>
-        <input type="text" name="session_id" id="session_id">
-        <br>
-        <input type="submit" value="Submit">
-    </form>
+  <div class="container-fluid full-height">
+    <h1 class="text-center">Teacher Assistant Platform</h1>
+    <div class="row h-100">
+      <div class="col-md-3 flex-column">
+        <!-- Courses Subpanel -->
+        <div class="list-group flex-grow scrollable-list" id="courses-list">
+          <!-- List of Courses will be populated here -->
+        </div>
+        <!-- Button for Adding Courses -->
+        <button type="button" id="add-course" class="btn btn-primary">Add Course</button>
+        
+        <!-- Students Subpanel -->
+        <div class="list-group flex-grow scrollable-list" id="students-list">
+          <!-- List of Students will be populated here -->
+        </div>
+        <!-- Button for Adding Students -->
+        <button type="button" id="add-student" class="btn btn-primary">Add Student</button>
+      </div>
 
-    <div id="output"></div>
+      <div class="col-md-5 flex-column">
+        <!-- Chat Subpanel -->
+        <div class="card flex-grow">
+          <div class="card-body" id="chat-box">
+            <!-- Chat messages will be populated here -->
+          </div>
+          <div class="card-footer">
+            <input type="text" id="message" class="form-control">
+            <button type="button" id="send-message" class="btn btn-primary">Send</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 flex-column">
+        <!-- Actions Subpanel -->
+        <div class="list-group flex-grow" id="actions-list">
+          <button type="button" class="list-group-item list-group-item-action" data-action="create-slides">Create Slides</button>
+          <button type="button" class="list-group-item list-group-item-action" data-action="create-activities">Create Activities</button>
+        </div>
+        
+        <!-- Action Parameters Subpanel -->
+        <div class="flex-grow" id="action-params">
+          <!-- Action parameters will be populated here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      // Populate Courses and Students
+      // getCourses();
+      // getStudents();
+
+      const courses = ['Course 1', 'Course 2', 'Course 3'];
+      const students = ['Student 1', 'Student 2', 'Student 3'];
+
+      courses.forEach((course, index) => {
+        $("#courses-list").append('<button type="button" class="list-group-item list-group-item-action' + (index === 0 ? ' active' : '') + '">' + course + '</button>');
+      });
+
+      students.forEach((student, index) => {
+        $("#students-list").append('<button type="button" class="list-group-item list-group-item-action' + (index === 0 ? ' active' : '') + '">' + student + '</button>');
+      });
+
+      // Make the first action active
+      $("#actions-list .list-group-item-action").first().addClass('active');
+
+      // Sample messages
+      $("#chat-box").append('<div class="card mb-2"><div class="card-body bg-light text-right">Hello, I need assistance</div></div>');
+      $("#chat-box").append('<div class="card mb-2"><div class="card-body bg-primary text-white text-left">Sure, how can I assist you?</div></div>');
+
+      // Action Parameters for first action (Create Slides)
+      $("#action-params").html('<p>Parameters for action: Create Slides</p>');
+
+      // Courses List
+      $("#courses-list").on('click', '.list-group-item-action', function() {
+        $("#courses-list .list-group-item-action").removeClass('active');
+        $(this).addClass('active');
+      });
+
+      // Students List
+      $("#students-list").on('click', '.list-group-item-action', function() {
+        $("#students-list .list-group-item-action").removeClass('active');
+        $(this).addClass('active');
+      });
+
+      // Send message
+      $("#send-message").click(function() {
+        const message = $("#message").val();
+        $("#chat-box").append('<div class="card mb-2"><div class="card-body bg-light text-right">' + message + '</div></div>');
+        $("#message").val('');
+      });
+
+      // Action Buttons
+      $("#actions-list").on('click', '.list-group-item-action', function() {
+        $("#actions-list .list-group-item-action").removeClass('active');
+        $(this).addClass('active');
+
+        const action = $(this).data('action');
+        const actionParams = 'Parameters for action: ' + action;
+        $("#action-params").html('<p>' + actionParams + '</p>');
+      });
+    });
+
+
+    /*
+    function getCourses() {
+      // AJAX Call to get Courses
+    }
+
+    function getStudents() {
+      // AJAX Call to get Students
+    }
+
+    function sendMessage(message) {
+      // AJAX Call to send message
+    }
+
+    function showActionParameters(action) {
+      // Show parameters for the selected action
+    }
+    */
+  </script>
 </body>
 </html>
