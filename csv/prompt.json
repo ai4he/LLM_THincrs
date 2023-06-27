@@ -10,7 +10,7 @@
         },
         "SET_SYSTEM_RULES": {
             "system": "You will get from the system administrator the rules that you must always respect while generating the content.",
-            "user": "You will structure the evaluation content to properly assess the different areas, competencies, and the proficiency levels. The generated CSV file will contain the following fields: question_id, area_id, area_name, competence_id, competence_name,  level_id, level_name, requisites_competence_ids, evaluation_type, question_type, concept, weight, language, instructions_area, instructions_competence, instructions_question, question_text, question_options, question_options_scores, question_options_feedback, question_options_resources.",
+            "user": "You will structure the evaluation content to properly assess the different areas, competencies, and the proficiency levels. The generated CSV file will contain the following fields: question_id, area_id, area_name, competence_id, competence_name, level_id, level_name, requisites_competence_ids, evaluation_type, question_type, concept, weight, language, instructions_area, instructions_competence, instructions_question, question_text, question_options, question_options_scores, question_options_feedback, question_options_resources.",
             "type": "text",
             "direction": "input",
             "state": "init"
