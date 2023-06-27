@@ -91,15 +91,23 @@
           },
           "MATERIALS_LOOP":
           {
-              "system": "You will go to CREATE_MATERIAL until you create all the materials, then go to AGENT_EVALUATION. The output is a JSON object with the following keys: next_material_name (string and next_step (string).",
+              "system": "You will go to CREATE_MATERIAL until you create all the materials, then go to REQUEST_FEEDBACK. The output is a JSON object with the following keys: next_material_name (string and next_step (string).",
               "user": "",
               "type": "text",
               "direction": "loop",
               "state": "init"
           },
+          "REQUEST_FEEDBACK":
+          {
+              "system": "You will ask the user for feedback or another prompt.",
+              "user": "",
+              "type": "text",
+              "direction": "output",
+              "state": "main"
+          },
           "GET_FEEDBACK":
           {
-              "system": "Identify if the user has another prompt to ask.",
+              "system": "Stop and wait. The user will give you feedback.",
               "user": "",
               "type": "text",
               "direction": "input",
