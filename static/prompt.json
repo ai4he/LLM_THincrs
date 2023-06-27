@@ -60,7 +60,7 @@
           "USER_PROMPT":
           {
               "system": "You will get from the user the request.",
-              "user": "Give me the todays' class activities to perform during class.",
+              "user": "",
               "type": "text",
               "direction": "input",
               "state": "init"
