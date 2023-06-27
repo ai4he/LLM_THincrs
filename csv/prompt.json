@@ -38,24 +38,24 @@
               "system": "You will mention the area to be addressed.",
               "user": "",
               "type": "text",
-              "direction": "input",
-              "state": "main"
+              "direction": "output",
+              "state": "init"
           },
           "GO_COMPETENCE_BY_COMPETENCE":
           {
               "system": "You will mention the competence to be addressed.",
               "user": "",
               "type": "text",
-              "direction": "input",
-              "state": "main"
+              "direction": "output",
+              "state": "init"
           },
           "GO_PROFICIENCY_BY_PROFICIENCY":
           {
               "system": "You will mention the proficiency level to be addressed.",
               "user": "",
               "type": "text",
-              "direction": "input",
-              "state": "main"
+              "direction": "output",
+              "state": "init"
           },
           "GENERATE_CONTENT_FOR_AREA_COMPETENCE_PROFICIENCY":
           {
@@ -63,7 +63,7 @@
               "user": "",
               "type": "text",
               "direction": "output",
-              "state": "main"
+              "state": "init"
           },
           "NEXT_ITERATION_JSON":
           {
@@ -71,7 +71,7 @@
               "user": "",
               "type": "text",
               "direction": "loop",
-              "state": "main"
+              "state": "init"
           },
           "END_SESSION":
           {
