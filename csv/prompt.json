@@ -22,13 +22,6 @@
             "direction": "input",
             "state": "init"
         },
-        "GENERATE_STRUCTURE": {
-            "system": "You will show the course structure in which you list all the combinations of all areas, all competencies per area, and the eight proficiency levels.",
-            "user": "",
-            "type": "text",
-            "direction": "output",
-            "state": "init"
-        },
         "GO_AREA_BY_AREA": {
             "system": "You will mention the area to be addressed.",
             "user": "",
@@ -58,7 +51,7 @@
             "state": "init"
         },
         "NEXT_ITERATION_JSON": {
-            "system": "Go to GO_AREA_BY_AREA or GO_COMPETENCE_BY_COMPETENCE or GO_PROFICIENCY_BY_PROFICIENCY until you complete all the possible combinations. The output of this step must be in JSON format. The JSON object has the following keys: next_step (string, the name the step to go), next_area (string, the area to generate), next_competence (string, the competence to generate), and next_proficiency (string, the proficiency level to generate). Then you will go to your proposed step.",
+            "system": "Jump to GO_AREA_BY_AREA or GO_COMPETENCE_BY_COMPETENCE or GO_PROFICIENCY_BY_PROFICIENCY until you complete all the possible combinations. The output of this step must be in JSON format. The JSON object has the following keys: next_step (string), next_area (string), next_competence (string), and next_proficiency (string). Then you will go to your proposed step.",
             "user": "",
             "type": "text",
             "direction": "loop",
