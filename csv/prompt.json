@@ -1,18 +1,26 @@
 {
     "context": "You are required to create pedagogical content for the design of courses that aligns with well-established standards to certify the knowledge of an individual in a certain field. Below is the format you MUST always follow; you must always write the step name and the colon symbol before generating every step response.",
     "states": {
-        "SET_SYSTEM_DESCRIPTION":
-        {
-            "system": "You will get from the system administrator the type of course that you will design.",
-            "user": "You will create the content for assessing the UNESCO Digital Competence Framework for Citizens (DigComp) v2.2. You might need to access internet to get the latest version.",
-            "type": "text",
-            "direction": "input",
-            "state": "init"
-        },
-        "SET_SYSTEM_RULES":
+          "SET_SYSTEM_DESCRIPTION":
           {
-              "system": "You will get from the system administrator the rules that you must always respect while generating the content.",
+              "system": "You will get from the system administrator the type of course that you will design.",
+              "user": "You will create the content for assessing the UNESCO Digital Competence Framework for Citizens (DigComp) v2.2. You might need to access internet to get the latest version.",
+              "type": "text",
+              "direction": "input",
+              "state": "init"
+          },
+          "SET_SYSTEM_RULES":
+          {
+             "system": "You will get from the system administrator the rules that you must always respect while generating the content.",
               "user": "You will structure the evaluation content to properly assess the different areas, competencies, and the eight proficiency levels.",
+              "type": "text",
+              "direction": "input",
+              "state": "init"
+          },
+          "GET_COURSE_PORTION":
+          {
+              "system": "You will get from the user the portion of the course to generate.",
+              "user": "",
               "type": "text",
               "direction": "input",
               "state": "init"
