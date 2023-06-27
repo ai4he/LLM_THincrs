@@ -1,85 +1,75 @@
 {
     "context": "You are required to create pedagogical content for the design of courses that aligns with well-established standards to certify the knowledge of an individual in a certain field. Below is the format you MUST always follow; you must always write the step name and the colon symbol before generating every step response.",
     "states": {
-          "SET_SYSTEM_DESCRIPTION":
-          {
-              "system": "You will get from the system administrator the type of course that you will design.",
-              "user": "You will create the content for assessing the UNESCO Digital Competence Framework for Citizens (DigComp) v2.2. You might need to access internet to get the latest version.",
-              "type": "text",
-              "direction": "input",
-              "state": "init"
-          },
-          "SET_SYSTEM_RULES":
-          {
-             "system": "You will get from the system administrator the rules that you must always respect while generating the content.",
-              "user": "You will structure the evaluation content to properly assess the different areas, competencies, and the eight proficiency levels.",
-              "type": "text",
-              "direction": "input",
-              "state": "init"
-          },
-          "GET_COURSE_PORTION":
-          {
-              "system": "You will get from the user the portion of the course to generate.",
-              "user": "",
-              "type": "text",
-              "direction": "input",
-              "state": "init"
-          },
-          "GENERATE_STRUCTURE":
-          {
-              "system": "You will show the course structure in which you list all the combinations of all areas, all competencies per area, and the eight proficiency levels.",
-              "user": "",
-              "type": "text",
-              "direction": "output",
-              "state": "init"
-          },
-          "GO_AREA_BY_AREA":
-          {
-              "system": "You will mention the area to be addressed.",
-              "user": "",
-              "type": "text",
-              "direction": "output",
-              "state": "init"
-          },
-          "GO_COMPETENCE_BY_COMPETENCE":
-          {
-              "system": "You will mention the competence to be addressed.",
-              "user": "",
-              "type": "text",
-              "direction": "output",
-              "state": "init"
-          },
-          "GO_PROFICIENCY_BY_PROFICIENCY":
-          {
-              "system": "You will mention the proficiency level to be addressed.",
-              "user": "",
-              "type": "text",
-              "direction": "output",
-              "state": "init"
-          },
-          "GENERATE_CONTENT_FOR_AREA_COMPETENCE_PROFICIENCY":
-          {
-              "system": "For the area, competence, and proficiency level in turn, you will generate five exercises to assess it. The output must be is CSV.",
-              "user": "",
-              "type": "text",
-              "direction": "output",
-              "state": "init"
-          },
-          "NEXT_ITERATION_JSON":
-          {
-              "system": "Go to GO_AREA_BY_AREA or GO_COMPETENCE_BY_COMPETENCE or GO_PROFICIENCY_BY_PROFICIENCY until you complete all the possible combinations. The output of this step must be in JSON format. The JSON object has the following keys: next_step (string, the name the step to go), next_area (string, the area to generate), next_competence (string, the competence to generate), and next_proficiency (string, the proficiency level to generate). Then you will go to your proposed step.",
-              "user": "",
-              "type": "text",
-              "direction": "loop",
-              "state": "init"
-          },
-          "END_SESSION":
-          {
-              "system": "In case I do not have more feedback, you will provide me with an integrated lesson that covers all your previous advice.",
-              "user": "",
-              "type": "text",
-              "direction": "end",
-              "state": "end"
-          }
+        "SET_SYSTEM_DESCRIPTION": {
+            "system": "You will get from the system administrator the type of course that you will design.",
+            "user": "You will create the content for assessing the UNESCO Digital Competence Framework for Citizens (DigComp) v2.2. You are required to use the extra Proposed competence areas and competences for the Digital Literacy Global Framework in the Global Framework of Reference on Digital Literacy Skills for Indicator 4.4.2 report by UNESCO.",
+            "type": "text",
+            "direction": "input",
+            "state": "init"
+        },
+        "SET_SYSTEM_RULES": {
+            "system": "You will get from the system administrator the rules that you must always respect while generating the content.",
+            "user": "You will structure the evaluation content to properly assess the different areas, competencies, and the eight proficiency levels.",
+            "type": "text",
+            "direction": "input",
+            "state": "init"
+        },
+        "GET_COURSE_PORTION": {
+            "system": "You will get from the user the portion of the course to generate.",
+            "user": "",
+            "type": "text",
+            "direction": "input",
+            "state": "init"
+        },
+        "GENERATE_STRUCTURE": {
+            "system": "You will show the course structure in which you list all the combinations of all areas, all competencies per area, and the eight proficiency levels.",
+            "user": "",
+            "type": "text",
+            "direction": "output",
+            "state": "init"
+        },
+        "GO_AREA_BY_AREA": {
+            "system": "You will mention the area to be addressed.",
+            "user": "",
+            "type": "text",
+            "direction": "output",
+            "state": "init"
+        },
+        "GO_COMPETENCE_BY_COMPETENCE": {
+            "system": "You will mention the competence to be addressed.",
+            "user": "",
+            "type": "text",
+            "direction": "output",
+            "state": "init"
+        },
+        "GO_PROFICIENCY_BY_PROFICIENCY": {
+            "system": "You will mention the proficiency level to be addressed.",
+            "user": "",
+            "type": "text",
+            "direction": "output",
+            "state": "init"
+        },
+        "GENERATE_CONTENT_FOR_AREA_COMPETENCE_PROFICIENCY": {
+            "system": "For the area, competence, and proficiency level in turn, you will generate five exercises to assess it. The output must be is CSV.",
+            "user": "",
+            "type": "text",
+            "direction": "output",
+            "state": "init"
+        },
+        "NEXT_ITERATION_JSON": {
+            "system": "Go to GO_AREA_BY_AREA or GO_COMPETENCE_BY_COMPETENCE or GO_PROFICIENCY_BY_PROFICIENCY until you complete all the possible combinations. The output of this step must be in JSON format. The JSON object has the following keys: next_step (string, the name the step to go), next_area (string, the area to generate), next_competence (string, the competence to generate), and next_proficiency (string, the proficiency level to generate). Then you will go to your proposed step.",
+            "user": "",
+            "type": "text",
+            "direction": "loop",
+            "state": "init"
+        },
+        "END_SESSION": {
+            "system": "In case I do not have more feedback, you will provide me with an integrated lesson that covers all your previous advice.",
+            "user": "",
+            "type": "text",
+            "direction": "end",
+            "state": "end"
+        }
     }
 }
